@@ -4,8 +4,6 @@ const forecast = require('./utils/forecast')
 const geocode = require('./utils/geocode')
 const express = require('express')
 
-
-
 const app = express()
 
 const publicFilePath = path.join(__dirname,'../public') //To get absolute path to public folder
