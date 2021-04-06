@@ -24,7 +24,11 @@ weatherForm.addEventListener('submit',(e)=>{
         else{
         //     console.log(data.location)
             console.log(data.forecast)
-            const temp = 'It is '+data.forecast.weather[0].description+' and wind speed is '+ data.forecast.wind.speed
+            const temp = `It is ${data.forecast.weather[0].description} and wind speed is ${ data.forecast.wind.speed}
+            It feels like ${data.forecast.main.feels_like}\n
+            Temperature is ${data.forecast.main.temp}\n
+            Humidity is ${data.forecast.main.humidity}\n
+            Pressure is ${data.forecast.main.pressure}\n`
             message1.textContent = data.location
             message2.textContent = temp
         }
