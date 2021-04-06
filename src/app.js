@@ -6,6 +6,8 @@ const express = require('express')
 
 const app = express()
 
+const port = process.env.PORT || 3000
+
 const publicFilePath = path.join(__dirname,'../public') //To get absolute path to public folder
 const viewsPath = path.join(__dirname,'../templates/views') //default is views
 const partialsPath = path.join(__dirname,'../templates/partials')
@@ -88,6 +90,6 @@ app.get('*', (req,res)=>{
 // app.com/help
 // app.com/pictures
 
-app.listen(3000,()=>{
-    console.log('server up and running')
+app.listen(port,()=>{
+    console.log('server up and running on port '+ port)
 })
