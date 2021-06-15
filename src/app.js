@@ -3,9 +3,11 @@ const path = require('path')
 // const forecast = require('./utils/forecast')
 // const geocode = require('./utils/geocode')
 const express = require('express')
+const bodyParser = require("body-parser");
 
 const app = express()
-
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 const port = process.env.PORT || 3000
 
 // const publicFilePath = path.join(__dirname,'../public') //To get absolute path to public folder
@@ -95,7 +97,9 @@ app.get('/', function (req, res) {
   
   // POST method route
   app.post('/', function (req, res) {
+    console.log(req.body)
     res.send('POST request to the homepage')
+    
   })
 
 
