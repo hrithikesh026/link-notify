@@ -1,108 +1,35 @@
 const path = require('path')
+const bot = require('./utils/bot')
+const cred = require('./utils/cred')
 // const hbs  = require('hbs')
 // const forecast = require('./utils/forecast')
 // const geocode = require('./utils/geocode')
 const express = require('express')
 const bodyParser = require("body-parser");
-
+const mybot = new bot(cred.token)
 const app = express()
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 const port = process.env.PORT || 3000
+const instruction = 'Select subject :\n\nCNS- /CNS\n\nSSCD- /SSCD\n\nSCM- /SCM'
 
-// const publicFilePath = path.join(__dirname,'../public') //To get absolute path to public folder
-// const viewsPath = path.join(__dirname,'../templates/views') //default is views
-// const partialsPath = path.join(__dirname,'../templates/partials')
-
-// console.log(publicFilePath)
-// console.log(partialsPath)
-
-
-// app.set('view engine', 'hbs')
-// app.set('views',viewsPath) //not required if views directory is used
-// hbs.registerPartials(partialsPath)
-// app.use(express.static(publicFilePath))
-
-// app.get('',(req,res)=>{
-//     res.render('index',{
-//         title: 'Homepage',
-//         name: 'Hrithikesh'
-//     })
-// })
-
-// app.get('/about',(req,res)=>{
-
-//     res.render('about',{
-//         title: 'About Page',
-//         name: 'Hrithikesh'
-//     })
-// })
-
-// app.get('/help',(req,res)=>{
-//     res.render('help',{
-//         title: 'Help Page',
-//         name: 'Hrithikesh'
-//     })
-// })
-
-
-// app.get('/weather', (req,res)=>{
-//     if(!req.query.address){
-//         return res.send({
-//             error: "Address Variable required"
-//         })
-//     }
-//     const Address = req.query.address
-//     geocode(Address, (error,{latitude,longitude,location} = {})=>{
-//         if(error){
-//             return res.send({error})
-//         }
-//         forecast(latitude,longitude,(error,forecastData)=>{
-//             if(error){
-//                 return res.send({error})
-//             }
-//             res.send({
-//                 address: req.query.address,
-//                 location: location,
-//                 forecast: forecastData
-//             })
-//         })
-//     })
-
-    
-// })
-
-// app.get('/help/*',(req,res)=>{
-//     res.render('404notfound',{
-//         name: 'Hrithikesh',
-//         error: 404,
-//         message: 'help article not found'
-//     })
-// })
-
-// app.get('*', (req,res)=>{
-//     res.render('404notfound',{
-//         name: 'Hrithikesh',
-//         error: 404,
-//         message: 'Page not found'
-//     })
-// })
-
-// app.com
-// app.com/help
-// app.com/pictures
 app.get('/', function (req, res) {
-    res.send('GET request to the homepage')
+    res.send('Welcome to Link Notifier')
   })
   
   // POST method route
   app.post('/', function (req, res) {
     console.log(req.body)
     res.send('POST request to the homepage')
+    if(req.body.message.text){
+      mybot.sendMessage(req.body.message.chat.id, instruction)
+      // mybot.sendMessage(1095149900, 'Reminder set successfully')
+    }
     
   })
-
+  
 
 app.listen(port,()=>{
     console.log('server up and running on port '+ port)
+    
 })
