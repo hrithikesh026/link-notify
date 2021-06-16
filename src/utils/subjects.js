@@ -9,7 +9,7 @@ subjects = {
 
 '/MADlab' : 'https://docs.google.com/forms/d/e/1FAIpQLSesRufbOhn2uswHKAdnpHhlCRFnfEgz44UO34d_JDuQFPuBgg/viewform',
 
-'/JavaJ2EE' : 'https://docs.google.com/forms/d/e/1FAIpQLSdK3072shdYBtK4fN8mKFPNRgb6xBLfpYA82hEPuvD1VzNTuQ/alreadyresponded',
+'/Java' : 'https://docs.google.com/forms/d/e/1FAIpQLSdK3072shdYBtK4fN8mKFPNRgb6xBLfpYA82hEPuvD1VzNTuQ/alreadyresponded',
 
 '/SSCDlab' : 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSeibz2FbwBKuoZ9_HZRIfacQFvV0fxlhoUmJ9wge3qqNX6WsQ/formResponse',
 

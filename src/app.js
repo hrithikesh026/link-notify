@@ -19,7 +19,7 @@ const port = process.env.PORT || 8443
 
 const instruction = `Select subject :
 
-CNS- /CNS
+CG- /CG
 
 SSCD- /SSCD
 
