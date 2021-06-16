@@ -45,12 +45,13 @@ app.get('/', function (req, res) {
     const rawdata = fs.readFileSync('./src/jobs.json');
     const jobs = JSON.parse(rawdata);
     res.send('{"status":"POST request successfull"}')
-    
+    req.body.message.text = req.body.message.text.replace('@CEC_Form_FIller_bot','')
+    // console.log(req.body.message.text)
     if(req.body.message.text){
       if(req.body.message.text =='/list'){
         mybot.sendMessage(req.body.message.chat.id, instruction)
       }
-      if(req.body.message.text.replace('@CEC_Form_FIller_bot','') in subjects){
+      if(req.body.message.text in subjects){
         
         if(jobs[req.body.message.text]){
           if(jobs[req.body.message.text].includes(req.body.message.chat.id)){
