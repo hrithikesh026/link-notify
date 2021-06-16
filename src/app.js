@@ -41,7 +41,7 @@ app.get('/', function (req, res) {
   
   // POST method route
   app.post('/'+cred.token, function (req, res) {
-    // console.log(req.body)
+    console.log(req.body)
     const rawdata = fs.readFileSync('./src/jobs.json');
     const jobs = JSON.parse(rawdata);
     res.send('{"status":"POST request successfull"}')
