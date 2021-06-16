@@ -50,7 +50,7 @@ app.get('/', function (req, res) {
       if(req.body.message.text =='/list'){
         mybot.sendMessage(req.body.message.chat.id, instruction)
       }
-      if(req.body.message.text.replace('@CEC_Form_Filler_bot','') in subjects){
+      if(req.body.message.text.replace('@CEC_Form_FIller_bot','') in subjects){
         
         if(jobs[req.body.message.text]){
           if(jobs[req.body.message.text].includes(req.body.message.chat.id)){
