@@ -41,7 +41,7 @@ app.get('/', function (req, res) {
   
   // POST method route
   app.post('/'+cred.token, function (req, res) {
-    console.log(req.body)
+    // console.log(req.body)
     const rawdata = fs.readFileSync('./src/jobs.json');
     const jobs = JSON.parse(rawdata);
     res.send('{"status":"POST request successfull"}')
@@ -50,7 +50,8 @@ app.get('/', function (req, res) {
       if(req.body.message.text =='/list'){
         mybot.sendMessage(req.body.message.chat.id, instruction)
       }
-      if(req.body.message.text in subjects){
+      if(req.body.message.text.replace('@CEC_Form_Filler_bot','') in subjects){
+        
         if(jobs[req.body.message.text]){
           if(jobs[req.body.message.text].includes(req.body.message.chat.id)){
             mybot.sendMessage(req.body.message.chat.id, 'Reminder already exists for '+req.body.message.text.slice(1))
