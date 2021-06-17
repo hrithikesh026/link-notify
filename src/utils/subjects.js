@@ -1,3 +1,4 @@
+const request = require('request')
 subjects = {
     '/CG' : 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSc3b9oM9m8pn123dqK8VnC8yCsdYS_QJnP-sX0cmgyuQBoB0Q/formResponse',
 
@@ -15,7 +16,7 @@ subjects = {
 
 '/CGlab' : 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdNIBtsvfABfyhDoc-SDklmx9vQvPZ7ZL1MCfzxlj4BUJ_4hQ/formResponse'
 }
-
+ 
 
 module.exports = subjects
 

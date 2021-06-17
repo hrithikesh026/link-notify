@@ -18,7 +18,11 @@ function myLoop() {
 myLoop()
 
 const check = async (jobs)=>{
+    try{
     for (var key in jobs) {
+        if(jobs[key] == undefined){
+            continue
+        }
         url = subjects[key]
         // console.log(url)
         // if(url!=undefined){
@@ -42,5 +46,9 @@ const check = async (jobs)=>{
             }
         })
 
+    }
+    }
+    catch(err){
+        mybot.sendMessage(1095149900, 'An error occured \n\n'+err)
     }
 }
