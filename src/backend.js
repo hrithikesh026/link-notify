@@ -12,7 +12,7 @@ function myLoop() {
     const jobs = JSON.parse(rawdata);  
     check(jobs) 
     myLoop()                  
-  }, 4000)
+  }, 30000)
   
 }
 myLoop()
