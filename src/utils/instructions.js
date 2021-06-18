@@ -3,7 +3,7 @@ const listsubjects = `Select subject :
 
 CG - /CG
 
-SS&CD - /SSCD
+SS and CD - /SSCD
 
 SCM - /SCM
 
@@ -13,7 +13,7 @@ MAD lab - /MADlab
 
 Java J2EE - /Java  
 
-SSCD lab - /SSCDlab
+SS and CD lab - /SSCDlab
 
 CG lab - /CGlab`
 
