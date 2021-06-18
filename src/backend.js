@@ -17,10 +17,7 @@ function myLoop() {
         }
         else{
             if(data.length != 0)
-            //     check(docs)
-            // docs = data
-            // check(data);
-            // console.log(data+'\n\n')
+            
                 check(data)
             
       }}
@@ -29,22 +26,18 @@ function myLoop() {
     // console.log(docs)
     myLoop()
 
-    // const rawdata = fs.readFileSync('./src/jobs.json');
-    // const jobs = JSON.parse(rawdata);              
+              
     },30000)
 }
+//Loop with 30 seconds delay
 myLoop()
 
-const myFunction = ()=>{
-    
-}
 
+//checking if links are enabled
 const check =(jobs)=>{
     try{
     jobs.forEach((job)=> {
-        // if(jobs[key] == undefined){
-        //     continue
-        // }
+        
         const url = subjects[job.subject]
         
         request( url, (error, success)=>{
@@ -53,7 +46,9 @@ const check =(jobs)=>{
                 return
             }
             else if(success.body){
-                console.log('ping successful '+job.subject)
+                // console.log('ping successful '+job.subject)
+
+                //If enables, Send a notification to all the users registered for that subject 
                 if(success.body.includes('is no longer accepting responses') == false){
                     // console.log("Not enabled")
                     
@@ -62,14 +57,13 @@ const check =(jobs)=>{
                         mybot.sendMessage(item, 'Hello there!\n'+ job.subject.slice(1) +' is enabled now\n' + url)
                         
                     });
-                    // delete jobs[key]
+                    
                     mongo.jobs.deleteOne({ subject: job.subject }).then(()=>{
                         console.log('deleted successfully')
                     }).catch((error)=>{
                         console.log('Deletion error! in backend'+error)
                     })
-                    // let data = JSON.stringify(jobs, null, 2);
-                    // fs.writeFileSync('./src/jobs.json', data);
+              
                 }
                 return
             }
