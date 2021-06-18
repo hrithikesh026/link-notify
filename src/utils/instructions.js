@@ -1,21 +1,21 @@
 const request = require('request')
 const listsubjects = `Select subject :
 
-CG- /CG
+CG - /CG
 
-SS & CD- /SSCD
+SS&CD - /SSCD
 
-SCM- /SCM
+SCM - /SCM
 
-WEB- /WEB
+WEB - /WEB
 
-MAD lab- /MADlab 
+MAD lab - /MADlab 
 
-Java J2EE- /Java  
+Java J2EE - /Java  
 
-SSCD lab- /SSCDlab
+SSCD lab - /SSCDlab
 
-CG lab- /CGlab`
+CG lab - /CGlab`
 
 const help = `Welcome!
 I can send you a notification when an attendance link is enabled
@@ -37,7 +37,7 @@ setInterval(()=>{
         console.log('refreshed')
     })
 },1000 * 60 * 10)
-
+// console.log(listsubjects)
 module.exports = {
     noactive,help,listsubjects
 }
