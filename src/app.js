@@ -7,7 +7,7 @@ const mongo = require('./db/mongo')
 const express = require('express')
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose')
-
+const instructions  = require('./utils/instructions')
 
 
 const mybot = new bot(cred.token)
@@ -19,23 +19,7 @@ const port = process.env.PORT || 3000
 
 // console.log(jobs)
 
-const instruction = `Select subject :
 
-CG- /CG
-
-SSCD- /SSCD
-
-SCM- /SCM
-
-WEB- /WEB
-
-MADlab- /MADlab 
-
-JavaJ2EE- /Java  
-
-SSCD lab- /SSCDlab
-
-CGlab- /CGlab`
 console.log('app runnung')
 app.get('/', function (req, res) {
     res.send('Welcome to Link Notifier')
@@ -49,12 +33,15 @@ app.get('/', function (req, res) {
     
     if(req.body.message.text){
       req.body.message.text = req.body.message.text.replace('@CEC_Form_FIller_bot','') //Filtering bot username
-      
-      if(req.body.message.text =='/list'){
-        mybot.sendMessage(req.body.message.chat.id, instruction)
+      if(req.body.message.text =='/help'){
+        mybot.sendMessage(req.body.message.chat.id, instructions.help)
       }
 
-      if(req.body.message.text in subjects){ //if text is a subject command,
+      else if(req.body.message.text =='/listsubjects'){
+        mybot.sendMessage(req.body.message.chat.id, instructions.listsubjects)
+      }
+
+      else if(req.body.message.text in subjects){ //if text is a subject command,
         
         await mongo.jobs.findOne({subject: req.body.message.text}, function (err, docs) {
           if(err){
@@ -93,7 +80,7 @@ app.get('/', function (req, res) {
         });
 
       }
-      if(req.body.message.text =='/delete'){ //for deleting  all the notification  of a user
+      else if(req.body.message.text =='/deleteactive'){ //for deleting  all the notification  of a user
         await mongo.jobs.find({},async function (err, docs) {
           if(err){
             console.log('Error occured in delete'+err)
@@ -116,7 +103,36 @@ app.get('/', function (req, res) {
         });
         mybot.sendMessage(req.body.message.chat.id, 'All notifications Deleted successfully!')
       }
-
+      else if(req.body.message.text =='/showactive'){
+        await mongo.jobs.find({},async function (err, docs){
+          if(err){
+            console.log('Error occured in show active'+err)
+          }
+          else{
+            var sublist = []
+            docs.forEach(async (doc)=>{
+              if(doc.users.includes(req.body.message.chat.id.toString())){
+                sublist.push(doc.subject)
+              }
+            })
+            // console.log(sublist)
+            if(sublist.length == 0){
+              mybot.sendMessage(req.body.message.chat.id, instructions.noactive)
+            }
+            else{
+              var str = ''
+              // for(var item in sublist){
+              //   
+              // }
+              sublist.forEach((sub)=>{
+                str = str+'\n-'+sub.slice(1)
+              })
+              mybot.sendMessage(req.body.message.chat.id, 'Current active notifications are:'+str )
+            }
+          }
+        })
+      }
+      
 
       
     }
