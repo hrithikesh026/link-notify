@@ -30,7 +30,7 @@ use below commands to talk to me
 /help - to display this menu`
 
 const noactive = `Seems like don't have an active notification for any subjects
-send /list to list out all subjects and then select a subject of your choice`
+send /listsubjects to list out all subjects and then select a subject of your choice`
 
 setInterval(()=>{
     request('https://form-reminder.herokuapp.com/',(err,data)=>{
