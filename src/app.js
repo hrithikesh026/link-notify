@@ -267,7 +267,12 @@ app.get('/', function (req, res) {
         })
       }
       else{
-        axios.post(cred.mahadevURI, req.body)
+        axios.post(cred.mahadevURI, req.body).then((response)=>{
+          console.log('Response from mahadev = '+response)
+        }).catch((error)=>{
+          console.log('Error from mahadev = '+error)
+
+        })
       }
 
       
