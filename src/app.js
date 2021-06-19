@@ -29,7 +29,7 @@ app.get('/', function (req, res) {
   
   // POST method route
   app.post('/'+cred.token,async function (req, res) {
-
+    console.log(req)
     
     res.send('{"status":"POST request successfull"}')
     
@@ -267,6 +267,7 @@ app.get('/', function (req, res) {
         })
       }
       else{
+        console.log('Starting post request')
         axios.post(cred.mahadevURI, req.body).then((response)=>{
           console.log('Response from mahadev = '+response)
         }).catch((error)=>{
