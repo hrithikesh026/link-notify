@@ -87,16 +87,24 @@ app.get('/', function (req, res) {
             console.log('Error occured in delete'+err)
           }else{
             docs.forEach(async (doc)=>{
-              list = doc.users.filter((item)=>{
-                item==req.body.message.chat.id.toString()
+              
+              var pos= -1
+              doc.users.forEach((item,ind)=>{
+                if(item == req.body.message.chat.id){
+                  pos = ind
+                }
               })
-              if(list.length == 0){
+              if(pos!=-1){
+                doc.users.splice(pos,1)
+              }
+            
+              if(doc.users.length == 0){
                 await mongo.jobs.deleteOne({ subject: doc.subject });
               }
               else
-              await mongo.jobs.updateOne({subject: doc.subject},{users: list},(err,doc)=>{
-                if(error){
-                  console.log('error while updating delete '+error)
+              await mongo.jobs.updateOne({subject: doc.subject},{users: doc.users},(err,doc)=>{
+                if(err){
+                  console.log('error while updating delete '+err)
                 }
               })
             })

@@ -13,7 +13,7 @@ class bot{
             console.log('failed'+error)
             this.count++;
             if(this.count==5){
-                return console.log("Couldn't send Notification");
+                return console.log("Couldn't send Notification\n Telegram down");
             }
             setTimeout(() => {
                 this.sendMessage(chat_id,text)
