@@ -1,4 +1,5 @@
 const request = require('request')
+const mongo = require('../db/mongo')
 const listsubjects = `Select subject :
 
 CG - /CG
@@ -29,12 +30,15 @@ use below commands to talk to me
 
 /help - to display this menu`
 
-const noactive = `Seems like don't have an active notification for any subjects
-send /listsubjects to list out all subjects and then select a subject of your choice`
+const noactive = `Seems like don't have an active notification for any subjects.
+Send /listsubjects to list out all subjects and then select a subject of your choice`
 
-setInterval(()=>{
+setInterval(async ()=>{
     request('https://form-reminder.herokuapp.com/',(err,data)=>{
-        console.log('refreshed')
+        console.log('server refreshed')
+    })
+    await mongo.jobs.findOne({subject: '/WEB'}, function (err, docs) {
+        console.log('DB refreshed')
     })
 },1000 * 60 * 10)
 // console.log(listsubjects)

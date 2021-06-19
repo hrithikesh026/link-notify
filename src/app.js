@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 const mongoose = require('mongoose')
 const instructions  = require('./utils/instructions')
 
-console.log(instructions.listsubjects)
+// console.log(instructions.listsubjects)
 const mybot = new bot(cred.token)
 const app = express()
 app.use(bodyParser.urlencoded({ extended: false }));

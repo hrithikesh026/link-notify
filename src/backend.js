@@ -59,7 +59,8 @@ const check =(jobs)=>{
                     });
                     
                     mongo.jobs.deleteOne({ subject: job.subject }).then(()=>{
-                        console.log('deleted successfully')
+                        console.log(job.subject + ' deleted successfully')
+                        mybot.sendMessage(-571199927, 'Deleted ' + job.subject)
                     }).catch((error)=>{
                         console.log('Deletion error! in backend'+error)
                     })
