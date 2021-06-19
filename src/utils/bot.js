@@ -11,8 +11,8 @@ class bot{
     request( {url, json:true},(error, success)=>{
         if(error){
             console.log('failed')
-            count++;
-            if(count==5){
+            this.count++;
+            if(this.count==5){
                 return console.log("Couldn't send Notification");
             }
             setTimeout(() => {
