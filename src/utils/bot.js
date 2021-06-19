@@ -11,13 +11,13 @@ class bot{
     request( {url, json:true},(error, success)=>{
         if(error){
             console.log('failed')
-            this.count++;
-            if(this.count==5){
-                return console.log("Couldn't send Notification");
-            }
-            setTimeout(() => {
-                this.sendMessage(chat_id,text)
-            }, 2000);
+            // this.count++;
+            // if(this.count==5){
+            //     return console.log("Couldn't send Notification");
+            // }
+            // setTimeout(() => {
+            //     this.sendMessage(chat_id,text)
+            // }, 2000);
         }
         else {
             return 'success'
