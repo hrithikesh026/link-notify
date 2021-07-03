@@ -30,18 +30,19 @@ use below commands to talk to me
 
 /help - to display this menu`
 
+
 const noactive = `Seems like don't have an active notification for any subjects.
 Send /listsubjects to list out all subjects and then select a subject of your choice`
 
-setInterval(async ()=>{
+
+//To send a get request to our own heroku server every 30 minutes to avoid it from going to sleep mode 
+setInterval(async ()=>{ 
     request('https://form-reminder.herokuapp.com/',(err,data)=>{
         console.log('server refreshed')
     })
-    await mongo.jobs.findOne({subject: '/WEB'}, function (err, docs) {
-        console.log('DB refreshed')
-    })
+    
 },1000 * 60 * 10)
-// console.log(listsubjects)
+
 module.exports = {
     noactive,help,listsubjects
 }

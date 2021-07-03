@@ -34,7 +34,7 @@ myLoop()
 
 
 //checking if links are enabled
-const check =(jobs)=>{
+const check =async (jobs)=>{
     try{
     jobs.forEach((job)=> {
         
@@ -60,7 +60,6 @@ const check =(jobs)=>{
                     
                     mongo.jobs.deleteOne({ subject: job.subject }).then(()=>{
                         console.log(job.subject + ' deleted successfully')
-                        mybot.sendMessage(-571199927, 'Deleted ' + job.subject)
                     }).catch((error)=>{
                         console.log('Deletion error! in backend'+error)
                     })

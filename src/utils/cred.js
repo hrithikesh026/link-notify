@@ -1,4 +1,4 @@
-const token = '1826845009:AAGaOn-NKh7z_XCWd5GL7RkGaRmJwcHEOPw';
+const token = 'telegram bot token';
 
-password = 'e1aPsW3zpJOZ9NAS';
+password = 'db password';
 module.exports ={ token, password}
